@@ -7,11 +7,14 @@ import android.graphics.Rect;
 import android.os.Handler;
 import android.os.Vibrator;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewTreeObserver;
 import android.view.WindowManager;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 /**
  * Created by Arthur on 2016/2/25 16 : 06.
@@ -40,6 +43,10 @@ public class SideImageView extends ImageView {
     private ImageView mDragImageView;
 
     private int statusBarHeight;
+
+    private ImageView sigleImageView;
+    private LinearLayout dynamic_box1;
+
 
     public SideImageView(Context context) {
         super(context);
@@ -71,6 +78,10 @@ public class SideImageView extends ImageView {
         this.context = context;
         mVibrator = (Vibrator) this.context.getSystemService(context.VIBRATOR_SERVICE);
         mWindowManager = (WindowManager) this.context.getSystemService(Context.WINDOW_SERVICE);
+
+        sigleImageView=(ImageView) ((MainActivity)context).findViewById(R.id.singleView);
+        dynamic_box1=(LinearLayout) ((MainActivity)context).findViewById(R.id.dynamic_box1);
+
     }
 
     @Override
@@ -82,6 +93,26 @@ public class SideImageView extends ImageView {
                 setDrawingCacheEnabled(true);
                 mDragBitmap = Bitmap.createBitmap(getDrawingCache());
                 destroyDrawingCache();
+
+
+                final ViewTreeObserver vto = dynamic_box1.getViewTreeObserver();
+                vto.addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
+                    public boolean onPreDraw() {
+                        vto.removeOnPreDrawListener(this);
+                        int height = dynamic_box1.getMeasuredHeight();
+                        int width = dynamic_box1.getMeasuredWidth();
+                        Log.d(TAG, height + "      " + width);
+                        return true;
+                    }
+                });
+
+
+                int[] location = new int[2];
+                dynamic_box1.getLocationOnScreen(location);
+                int x = location[0];
+                int y = location[1];
+                Log.d(TAG, x + "      " + y);
+
 
                 //得到状态栏的高度
                 Rect frame = new Rect();
