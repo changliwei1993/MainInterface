@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/_root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="dream.com.mianinterface.MainActivity">
@@ -12,22 +13,22 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <ImageView
-            android:id="@+id/img_1"
+        <dream.com.mianinterface.SideImageView
+            android:id="@+id/img_one"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="@drawable/img1"/>
 
-        <ImageView
-            android:id="@+id/img_2"
+        <dream.com.mianinterface.SideImageView
+            android:id="@+id/img_two"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="@drawable/img2"/>
 
-        <ImageView
-            android:id="@+id/img_3"
+        <dream.com.mianinterface.SideImageView
+            android:id="@+id/img_three"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
