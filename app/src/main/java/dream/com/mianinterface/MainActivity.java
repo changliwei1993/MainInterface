@@ -2,6 +2,7 @@ package dream.com.mianinterface;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.view.WindowManager;
 
 public class MainActivity extends Activity{
     private String TAG="MainActivity";
@@ -9,7 +10,10 @@ public class MainActivity extends Activity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //透明状态栏
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         setContentView(R.layout.activity_main);
+
         initView();
     }
     private void initView(){

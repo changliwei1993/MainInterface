@@ -73,8 +73,8 @@ public class SideImageView extends ImageView {
                 mDownX = (int) event.getRawX();
                 mDownY = (int) event.getRawY();
 
-                mPoint2ItemTop = mDownY - getTop();
-                mPoint2ItemLeft = mDownX - getLeft();
+                mPoint2ItemTop = mDownY - getTop();//
+                mPoint2ItemLeft = mDownX - getLeft();//
                 mHandler.postDelayed(mLongClickRunnable, 1000);
                 break;
             case MotionEvent.ACTION_MOVE:
