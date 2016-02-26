@@ -13,7 +13,6 @@ public class MainActivity extends Activity{
         //透明状态栏
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         setContentView(R.layout.activity_main);
-
         initView();
     }
     private void initView(){
@@ -25,38 +24,4 @@ public class MainActivity extends Activity{
         img_three.setContext(this);
     }
 
-
-
-/*    @Override
-    public boolean onTouch(View v, MotionEvent event) {
-        switch (v.getId()){
-            case R.id.img_one:
-                Log.d(TAG,"img_one");
-                switch (event.getAction()){
-                    case MotionEvent.ACTION_DOWN:
-                        Log.d(TAG,"img_oneACTION_DOWN");
-                        break;
-                    case MotionEvent.ACTION_MOVE:
-                        Log.d(TAG,"img_oneACTION_MOVE");
-                        break;
-                    case MotionEvent.ACTION_UP:
-                        Log.d(TAG,"img_oneACTION_UP");
-                        break;
-                }
-
-
-                break;
-
-            case R.id.img_two:
-                Log.d(TAG,"img_one");
-                break;
-
-            case R.id.img_three:
-                Log.d(TAG,"img_one");
-                break;
-            default:
-                break;
-        }
-        return true;
-    }*/
 }
