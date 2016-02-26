@@ -71,18 +71,34 @@ public class SideImageView extends ImageView {
                 mDragBitmap = Bitmap.createBitmap(getDrawingCache());
                 destroyDrawingCache();
                 mDownX = (int) event.getRawX();
-                mDownY = (int) event.getRawX();
+                mDownY = (int) event.getRawY();
+
+                Log.d("getRawY", String.valueOf(event.getRawY()));//与屏幕的原点Y的距离
+                Log.d("getY", String.valueOf(event.getY()));//相对位置
+                Log.d("getTop", String.valueOf(getTop()));//当前ImageVie与父布局的距离
 
                 mPoint2ItemTop = mDownY - getTop();
                 mPoint2ItemLeft = mDownX - getLeft();
+
+                Log.d("mPoint2ItemTop", String.valueOf(mPoint2ItemTop));
 
                 mHandler.postDelayed(mLongClickRunnable, 1000);
                 Log.d(TAG,"ACTION_DOWN");
                 break;
             case MotionEvent.ACTION_MOVE:
+                int moveX = (int)event.getRawX();
+                int moveY = (int) event.getRawY();
+                mHandler.removeCallbacks(mLongClickRunnable);
+                if (isDrag){
+                    mWindowLayoutParams.x = moveX - mPoint2ItemLeft;
+                    mWindowLayoutParams.y = moveY - mPoint2ItemTop ;
+                    mWindowManager.updateViewLayout(mDragImageView, mWindowLayoutParams);
+                }
+
                 Log.d(TAG,"ACTION_MOVE");
                 break;
             case MotionEvent.ACTION_UP:
+                mHandler.removeCallbacks(mLongClickRunnable);
                 Log.d(TAG,"ACTION_UP");
                 break;
         }
