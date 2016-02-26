@@ -7,7 +7,6 @@ import android.graphics.Rect;
 import android.os.Handler;
 import android.os.Vibrator;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
@@ -39,6 +38,12 @@ public class SideImageView extends ImageView {
 
     private float press_relate_X;
     private float press_relate_Y;
+
+    private int card_one_locate_X;
+    private int card_one_locate_Y;
+
+    private int card_one_width;
+    private int card_one_height;
 
     private ImageView mDragImageView;
 
@@ -94,24 +99,24 @@ public class SideImageView extends ImageView {
                 mDragBitmap = Bitmap.createBitmap(getDrawingCache());
                 destroyDrawingCache();
 
-
+                //得到卡片在屏幕中的宽高
                 final ViewTreeObserver vto = dynamic_box1.getViewTreeObserver();
                 vto.addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
                     public boolean onPreDraw() {
                         vto.removeOnPreDrawListener(this);
-                        int height = dynamic_box1.getMeasuredHeight();
-                        int width = dynamic_box1.getMeasuredWidth();
-                        Log.d(TAG, height + "      " + width);
+                        card_one_height = dynamic_box1.getMeasuredHeight();
+                        card_one_width= dynamic_box1.getMeasuredWidth();
+
                         return true;
                     }
                 });
 
 
+                //得到卡片在屏幕中的位置
                 int[] location = new int[2];
                 dynamic_box1.getLocationOnScreen(location);
-                int x = location[0];
-                int y = location[1];
-                Log.d(TAG, x + "      " + y);
+                card_one_locate_X = location[0];
+                card_one_locate_Y= location[1];
 
 
                 //得到状态栏的高度
@@ -128,7 +133,7 @@ public class SideImageView extends ImageView {
                 locate_Y = (int) (event.getRawY()-press_relate_Y-statusBarHeight);
 
                 //抛出线程，1秒后执行长按事件
-                mHandler.postDelayed(mLongClickRunnable, 1000);
+                mHandler.postDelayed(mLongClickRunnable, 700);
 
                 break;
             case MotionEvent.ACTION_MOVE:
@@ -140,6 +145,19 @@ public class SideImageView extends ImageView {
                     mWindowLayoutParams.x = (int) (moveX-press_relate_X);
                     mWindowLayoutParams.y = (int) (moveY-press_relate_Y-statusBarHeight);
                     mWindowManager.updateViewLayout(mDragImageView, mWindowLayoutParams);
+                    if (moveX>=card_one_locate_X&&moveX<=card_one_locate_X+card_one_width&&moveY>=card_one_locate_Y&&moveY<=card_one_locate_Y+card_one_height){
+
+                        sigleImageView.setVisibility(VISIBLE);
+                        sigleImageView.setImageBitmap(Bitmap.createBitmap(getDrawingCache()));
+                        mWindowManager.removeView(mDragImageView);
+                        isDrag=false;
+                        setVisibility(VISIBLE);
+
+                    }
+
+
+
+
                 }else {
                     //没有长按就移动位置
                     mHandler.removeCallbacks(mLongClickRunnable);
