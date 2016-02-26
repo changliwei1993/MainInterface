@@ -73,17 +73,9 @@ public class SideImageView extends ImageView {
                 mDownX = (int) event.getRawX();
                 mDownY = (int) event.getRawY();
 
-                Log.d("getRawY", String.valueOf(event.getRawY()));//与屏幕的原点Y的距离
-                Log.d("getY", String.valueOf(event.getY()));//相对位置
-                Log.d("getTop", String.valueOf(getTop()));//当前ImageVie与父布局的距离
-
                 mPoint2ItemTop = mDownY - getTop();
                 mPoint2ItemLeft = mDownX - getLeft();
-
-                Log.d("mPoint2ItemTop", String.valueOf(mPoint2ItemTop));
-
                 mHandler.postDelayed(mLongClickRunnable, 1000);
-                Log.d(TAG,"ACTION_DOWN");
                 break;
             case MotionEvent.ACTION_MOVE:
                 int moveX = (int)event.getRawX();
@@ -94,8 +86,6 @@ public class SideImageView extends ImageView {
                     mWindowLayoutParams.y = moveY - mPoint2ItemTop ;
                     mWindowManager.updateViewLayout(mDragImageView, mWindowLayoutParams);
                 }
-
-                Log.d(TAG,"ACTION_MOVE");
                 break;
             case MotionEvent.ACTION_UP:
                 mHandler.removeCallbacks(mLongClickRunnable);
@@ -111,7 +101,7 @@ public class SideImageView extends ImageView {
         mWindowLayoutParams.gravity = Gravity.TOP | Gravity.LEFT;
         mWindowLayoutParams.x = downX- mPoint2ItemLeft;
         mWindowLayoutParams.y = downY- mPoint2ItemTop;
-        mWindowLayoutParams.alpha = 0.55f;
+        mWindowLayoutParams.alpha = 0.35f;
         mWindowLayoutParams.width = WindowManager.LayoutParams.WRAP_CONTENT;
         mWindowLayoutParams.height = WindowManager.LayoutParams.WRAP_CONTENT;
         mWindowLayoutParams.flags = WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE
