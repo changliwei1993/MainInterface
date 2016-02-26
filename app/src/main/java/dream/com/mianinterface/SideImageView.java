@@ -12,7 +12,6 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 
 /**
  * Created by Arthur on 2016/2/25 16 : 06.
@@ -21,7 +20,6 @@ public class SideImageView extends ImageView {
 
 
     private Context context;
-    private RelativeLayout _root;
     private String TAG="SideImageView";
     private boolean isDrag = false;
     private Vibrator mVibrator;
@@ -30,15 +28,15 @@ public class SideImageView extends ImageView {
     private Bitmap mDragBitmap;
     private int mDownX;
     private int mDownY;
+    private int mPoint2ItemTop ;
+    private int mPoint2ItemLeft;
     private ImageView mDragImageView;
 
     public SideImageView(Context context) {
         super(context);
     }
 
-    public void set_root(RelativeLayout _root) {
-        this._root = _root;
-    }
+
 
     public SideImageView(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -74,6 +72,10 @@ public class SideImageView extends ImageView {
                 destroyDrawingCache();
                 mDownX = (int) event.getRawX();
                 mDownY = (int) event.getRawX();
+
+                mPoint2ItemTop = mDownY - getTop();
+                mPoint2ItemLeft = mDownX - getLeft();
+
                 mHandler.postDelayed(mLongClickRunnable, 1000);
                 Log.d(TAG,"ACTION_DOWN");
                 break;
@@ -91,8 +93,8 @@ public class SideImageView extends ImageView {
         mWindowLayoutParams = new WindowManager.LayoutParams();
         mWindowLayoutParams.format = PixelFormat.TRANSLUCENT;
         mWindowLayoutParams.gravity = Gravity.TOP | Gravity.LEFT;
-        mWindowLayoutParams.x = downX;
-        mWindowLayoutParams.y = downY;
+        mWindowLayoutParams.x = downX- mPoint2ItemLeft;
+        mWindowLayoutParams.y = downY- mPoint2ItemTop;
         mWindowLayoutParams.alpha = 0.55f;
         mWindowLayoutParams.width = WindowManager.LayoutParams.WRAP_CONTENT;
         mWindowLayoutParams.height = WindowManager.LayoutParams.WRAP_CONTENT;
