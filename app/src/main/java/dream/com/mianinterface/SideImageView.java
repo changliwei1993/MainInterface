@@ -7,6 +7,7 @@ import android.graphics.Rect;
 import android.os.Handler;
 import android.os.Vibrator;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
@@ -134,10 +135,11 @@ public class SideImageView extends ImageView {
 
                 //抛出线程，1秒后执行长按事件
                 mHandler.postDelayed(mLongClickRunnable, 700);
+                Log.d(TAG,"DOWN");
 
                 break;
             case MotionEvent.ACTION_MOVE:
-
+                Log.d(TAG,"MOVE");
                 int moveX = (int) event.getRawX();
                 int moveY = (int) event.getRawY();
                 if (isDrag) {
@@ -157,10 +159,11 @@ public class SideImageView extends ImageView {
 
                 }else {
                     //没有长按就移动位置
-                    mHandler.removeCallbacks(mLongClickRunnable);
+                   // mHandler.removeCallbacks(mLongClickRunnable);
                 }
                 break;
             case MotionEvent.ACTION_UP:
+                Log.d(TAG,"MOVE");
                 if (isDrag) {
                     //长按后抬起
                     mWindowManager.removeView(mDragImageView);
