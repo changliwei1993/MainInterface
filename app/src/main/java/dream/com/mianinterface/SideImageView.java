@@ -155,9 +155,6 @@ public class SideImageView extends ImageView {
 
                     }
 
-
-
-
                 }else {
                     //没有长按就移动位置
                     mHandler.removeCallbacks(mLongClickRunnable);
