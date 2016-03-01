@@ -40,22 +40,65 @@
 
     </LinearLayout>
 
-    <FrameLayout
+    <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true">
-
         <RelativeLayout
-            android:layout_width="150dp"
-            android:layout_height="300dp"
+            android:layout_width="300dp"
+            android:layout_height="500dp"
             android:background="#C6E2FF">
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/btn_dial_num_normal"
+                android:layout_marginLeft="10dp"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/btn_dial_num_normal"
+                android:rotation="45"
+                android:layout_marginTop="80dp"
+                android:layout_marginLeft="100dp"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/btn_dial_num_normal"
+                android:rotation="90"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="150dp"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/btn_dial_num_normal"
+                android:rotation="135"
+                android:layout_marginLeft="100dp"
+                android:layout_marginTop="320dp"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/btn_dial_num_normal"
+                android:rotation="180"
+                android:layout_marginTop="400dp"
+                android:layout_marginLeft="10dp"/>
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="150dp"
+            android:layout_height="300dp"
+            android:layout_centerVertical="true">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/btn_dial_num_normal"
                 android:rotation="55"
-                android:layout_marginTop="15dp"/>
+                android:layout_alignParentTop="true"/>
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -63,19 +106,21 @@
                 android:background="@drawable/btn_dial_num_normal"
                 android:rotation="90"
                 android:layout_marginLeft="35dp"
-                android:layout_marginTop="110dp"/>
+                android:layout_centerVertical="true"/>
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/btn_dial_num_normal"
                 android:rotation="125"
-                android:layout_marginTop="205dp"/>
+                android:layout_alignParentBottom="true"/>
 
 
         </RelativeLayout>
 
-    </FrameLayout>
+
+
+    </RelativeLayout>
 
 
     <LinearLayout
