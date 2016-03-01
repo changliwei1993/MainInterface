@@ -13,48 +13,86 @@
         android:layout_width="80dp"
         android:layout_height="240dp"
         android:layout_centerVertical="true"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:visibility="gone">
 
         <dream.com.mianinterface.SideImageView
             android:id="@+id/img_one"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@drawable/img1"/>
+            android:background="@drawable/img1" />
 
         <dream.com.mianinterface.SideImageView
             android:id="@+id/img_two"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@drawable/img2"/>
+            android:background="@drawable/img2" />
 
         <dream.com.mianinterface.SideImageView
             android:id="@+id/img_three"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@drawable/img3"/>
+            android:background="@drawable/img3" />
 
 
     </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true">
+
+        <RelativeLayout
+            android:layout_width="150dp"
+            android:layout_height="300dp"
+            android:background="#C6E2FF">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/btn_dial_num_normal"
+                android:rotation="55"
+                android:layout_marginTop="15dp"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/btn_dial_num_normal"
+                android:rotation="90"
+                android:layout_marginLeft="35dp"
+                android:layout_marginTop="110dp"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/btn_dial_num_normal"
+                android:rotation="125"
+                android:layout_marginTop="205dp"/>
+
+
+        </RelativeLayout>
+
+    </FrameLayout>
 
 
     <LinearLayout
         android:id="@+id/dynamic_box1"
         android:layout_width="300dp"
         android:layout_height="300dp"
-        android:background="#D1EEEE"
-        android:layout_centerVertical="true"
         android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
         android:layout_marginRight="60dp"
+        android:background="#D1EEEE"
         android:orientation="vertical">
 
         <ImageView
             android:id="@+id/singleView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:visibility="gone"/>
+            android:visibility="gone" />
 
 
     </LinearLayout>
